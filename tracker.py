@@ -56,7 +56,7 @@ def now_utc() -> dt.datetime:
 
 
 # --------------------------------------------------------------------------- HTTP
-def http_get(url: str, params: dict | None = None, retries: int = 3, timeout: int = 30) -> bytes:
+def http_get(url: str, params: dict | None = None, retries: int = 3, timeout: int = 30, retry_429: bool = True) -> bytes:
     if params:
         url = url + "?" + urllib.parse.urlencode(params, doseq=True)
     if not url.startswith("https://"):
@@ -74,8 +74,10 @@ def http_get(url: str, params: dict | None = None, retries: int = 3, timeout: in
             if e.code in (400, 401, 403, 404):
                 raise
             last = e
-            if e.code == 429:  # rate limited: wait longer before retrying
-                time.sleep(20 * (attempt + 1))
+            if e.code == 429:
+                if not retry_429:  # e.g. YouTube's daily quota: retrying cannot help
+                    raise
+                time.sleep(20 * (attempt + 1))  # rate limited (Reddit): wait longer before retrying
                 continue
         except (urllib.error.URLError, TimeoutError, ConnectionError) as e:
             last = e
@@ -106,18 +108,28 @@ class YouTube:
 
     def __init__(self, key: str, budget: int):
         self.key, self.budget, self.used = key, budget, 0
+        self.blocked: set[str] = set()  # endpoints (or "*") that hit YouTube's own daily limit
 
     def call(self, endpoint: str, **params):
         cost = self.COST.get(endpoint, 1)
-        if self.used + cost > self.budget:
+        if self.used + cost > self.budget or endpoint in self.blocked or "*" in self.blocked:
             raise QuotaBudgetExceeded(endpoint)
         params["key"] = self.key
         try:
-            raw = http_get(API + endpoint, params)
+            raw = http_get(API + endpoint, params, retry_429=False)
         except urllib.error.HTTPError as e:
-            body = e.read().decode("utf-8", "ignore")[:300]
+            body = e.read().decode("utf-8", "ignore")
+            if e.code in (403, 429) and "quota" in body.lower():
+                # YouTube's daily limit is reached: stop asking instead of retrying for every call.
+                scope = "search" if "search queries" in body.lower() else "*"
+                if scope not in self.blocked:
+                    log(f"YouTube daily limit reached ({'search queries' if scope == 'search' else 'all requests'}); "
+                        "skipping those calls until the next run")
+                self.blocked.add(scope)
+                raise QuotaBudgetExceeded(endpoint) from None
+            msg = re.sub(r"\s+", " ", body)[:200]
             # Never include the request URL in errors: it contains the API key.
-            raise RuntimeError(f"YouTube {endpoint}: HTTP {e.code} {body}") from None
+            raise RuntimeError(f"YouTube {endpoint}: HTTP {e.code} {msg}") from None
         self.used += cost
         return json.loads(raw)
 
