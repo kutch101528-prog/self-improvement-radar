@@ -23,16 +23,29 @@ jobs:
         with:
           python-version: "3.12"
 
+      - name: Install transcript reader (for video intros)
+        # Pinned version. Check it against your approved package list.
+        run: pip install --disable-pip-version-check "youtube-transcript-api==1.2.4"
+
       - name: Run tracker
         env:
           YT_API_KEY: ${{ secrets.YT_API_KEY }}
-        run: python tracker.py
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          SMTP_USER: ${{ secrets.SMTP_USER }}
+          SMTP_APP_PASSWORD: ${{ secrets.SMTP_APP_PASSWORD }}
+          REPORT_EMAIL_TO: ${{ secrets.REPORT_EMAIL_TO }}
+          YT_OAUTH_CLIENT_ID: ${{ secrets.YT_OAUTH_CLIENT_ID }}
+          YT_OAUTH_CLIENT_SECRET: ${{ secrets.YT_OAUTH_CLIENT_SECRET }}
+          YT_OAUTH_REFRESH_TOKEN: ${{ secrets.YT_OAUTH_REFRESH_TOKEN }}
+        run: python tracker.py   # Sundays: weekly opportunities + email. Wednesdays: channel builder.
 
       - name: Build site folder
         run: |
           rm -rf site && mkdir -p site/archive
           cp dashboard.html site/index.html
           cp data/archive/*.html site/archive/ 2>/dev/null || true
+          mkdir -p site/reports && cp data/reports/*.html site/reports/ 2>/dev/null || true
           # Simple list of past days at /archive/
           {
             echo '<!doctype html><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Past snapshots</title><body style="font-family:system-ui;max-width:640px;margin:40px auto;padding:0 16px"><h1>Past snapshots</h1><ul>'
@@ -43,10 +56,13 @@ jobs:
           } > site/archive/index.html
 
       - name: Save results to the repo
+        if: always()   # keep the collected data even if a later step failed
         run: |
           git config user.name "trend-radar-bot"
           git config user.email "trend-radar-bot@users.noreply.github.com"
-          git add data/ dashboard.html site/
+          if [ -d data ]; then git add data/; fi
+          if [ -f dashboard.html ]; then git add dashboard.html; fi
+          if [ -d site ]; then git add site/; fi
           git commit -m "Daily update $(date -u +%F)" || echo "No changes"
           git push
 
