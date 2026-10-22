@@ -1,0 +1,3 @@
+# Optional: only needed for the "Intro" (first 60 seconds of transcript) feature.
+# Check this package against your organisation's approved list and pin an exact version before installing.
+youtube-transcript-api
