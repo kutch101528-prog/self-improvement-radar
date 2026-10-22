@@ -96,6 +96,74 @@ td.term button{background:none;border:0;padding:0;font:inherit;color:var(--ink);
 .empty{padding:40px 0;color:var(--muted)}
 footer{margin-top:48px;color:var(--muted);font-size:13px}
 footer pre{white-space:pre-wrap;background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:10px;max-height:260px;overflow:auto}
+.cardtop{display:flex;align-items:flex-start;gap:8px}
+.cardtop h3{flex:1;min-width:0}
+.savebtn{flex:none;margin-top:8px;background:none;border:1px solid var(--line);border-radius:8px;padding:3px 8px;font:600 13px "Instrument Sans",sans-serif;color:var(--muted);cursor:pointer}
+.savebtn[aria-pressed="true"]{background:var(--marigold);border-color:var(--marigold);color:var(--marigold-ink)}
+.cmts{margin:6px 0 0;padding-left:18px}
+.cmts li{margin-bottom:4px}
+.cmts .likes{color:var(--muted);font-size:12.5px;white-space:nowrap}
+.insight{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:18px 22px;margin-bottom:18px;max-width:880px}
+.insight h3{font:700 19px "Bricolage Grotesque",Georgia,serif;margin:0 0 2px}
+.insight .meta{color:var(--muted);font-size:13px;margin-bottom:10px}
+.insight h4{font-size:15px;margin:14px 0 4px}
+.insight ul{margin:0;padding-left:20px}
+.insight p{margin:4px 0}
+.aud{list-style:none;margin:0;padding:0;max-width:880px}
+.aud li{padding:12px 0;border-bottom:1px solid var(--line)}
+.aud .txt{font-size:15px}
+.aud .meta{font-size:13px;color:var(--muted);margin-top:3px}
+.aud .meta a{color:var(--muted)}
+.pick{display:grid;grid-template-columns:minmax(0,360px) minmax(0,1fr);gap:22px;background:var(--surface);border:2px solid var(--marigold);border-radius:12px;padding:20px;margin-bottom:26px}
+@media (max-width:820px){.pick{grid-template-columns:1fr}}
+.pick img{width:100%;border-radius:8px;display:block}
+.pick h2{margin:0 0 4px}
+.pick .lead{font:700 22px/1.25 "Bricolage Grotesque",Georgia,serif;margin:4px 0 10px}
+.kv{display:grid;grid-template-columns:max-content minmax(0,1fr);gap:4px 14px;font-size:14px;margin:0}
+.kv dt{color:var(--muted)}
+.kv dd{margin:0}
+.opp-meta{color:var(--muted);font-size:14px;margin:-4px 0 16px}
+.opp-meta a{color:var(--sage)}
+table.opp td{vertical-align:middle}
+table.opp tr.row{cursor:pointer}
+table.opp tr.row:hover td{background:var(--sage-soft)}
+.mini{display:flex;align-items:center;gap:10px;min-width:280px;max-width:420px;white-space:normal}
+.mini img{width:96px;aspect-ratio:16/9;object-fit:cover;border-radius:5px;flex:none}
+.mini b{display:block;font-weight:600;line-height:1.3}
+.mini span{color:var(--muted);font-size:12.5px}
+.st{font-size:12px;font-weight:600;border-radius:999px;padding:1px 8px;background:var(--sage-soft);color:var(--sage)}
+.st.Rising,.st.Recovered{background:var(--up);color:var(--surface)}
+.st.Falling,.st.Dropped{background:var(--down);color:var(--surface)}
+.st.New{background:var(--new);color:#fff}
+.dec{font-weight:600}
+.dec.ProduceNow{color:var(--up)}
+.detail td{white-space:normal;background:var(--paper)}
+.detail .cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:18px 26px;padding:8px 4px 14px}
+.detail h4{margin:0 0 6px;font-size:14.5px}
+.detail .kv{font-size:13.5px}
+.ev{font-size:11.5px;color:var(--muted);margin-left:4px}
+.stats-row{display:flex;flex-wrap:wrap;gap:26px;margin:4px 0 20px}
+.stats-row b{display:block;font:700 22px "Bricolage Grotesque",Georgia,serif}
+.stats-row span{color:var(--muted);font-size:13px}
+.subnav{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 18px}
+.subnav a{font-size:14px;font-weight:600;color:var(--sage);text-decoration:none;border:1px solid var(--line);border-radius:999px;padding:4px 12px;background:var(--surface)}
+.block{margin:0 0 34px}
+.block h2{margin-bottom:2px}
+.idea{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:16px 18px;margin-bottom:14px}
+.idea-top{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-bottom:6px}
+.src{font-size:12px;font-weight:600;border-radius:999px;padding:1px 9px;background:var(--sage-soft);color:var(--sage)}
+.idea h3{font:700 18px/1.3 "Bricolage Grotesque",Georgia,serif;margin:2px 0 6px}
+.idea .why{margin:0 0 4px}
+.idea .evi{color:var(--muted);font-size:13.5px;margin:0 0 8px}
+.idea .cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px 26px;margin-top:8px}
+.tlist{list-style:none;margin:0;padding:0}
+.tlist li{display:flex;align-items:center;gap:8px;padding:3px 0;font-size:14px}
+.tlist li.chosen{font-weight:700}
+.tlist button{font:inherit;font-size:12px;border:1px solid var(--line);background:var(--paper);color:var(--ink);border-radius:6px;padding:1px 7px;cursor:pointer}
+.idea textarea{width:100%;min-height:54px;font:inherit;font-size:14px;color:var(--ink);background:var(--paper);border:1px solid var(--line);border-radius:8px;padding:6px 8px}
+.idea select{font:inherit;color:var(--ink);background:var(--paper);border:1px solid var(--line);border-radius:8px;padding:4px 8px}
+.mult{font-weight:700;color:var(--marigold-ink);background:var(--marigold);border-radius:6px;padding:1px 7px}
+.note-box{background:var(--surface);border:1px dashed var(--line);border-radius:10px;padding:14px 16px;max-width:880px}
 [hidden]{display:none!important}
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
 </style>
@@ -139,6 +207,77 @@ footer pre{white-space:pre-wrap;background:var(--surface);border:1px solid var(-
     </div>
     <div class="result-note" id="vnote"></div>
     <div class="grid" id="grid"></div>
+  </section>
+
+  <section id="tab-opportunities" role="tabpanel" hidden>
+    <div id="opp-empty" class="empty" hidden>The weekly opportunity research runs every Sunday morning. The first full report appears after the first Sunday run, and it gets stronger once a full week of daily searches has been collected.</div>
+    <div id="opp-wrap">
+      <p class="opp-meta" id="opp-meta"></p>
+      <div id="opp-pick"></div>
+      <div class="filters">
+        <label>View <select id="oview"></select></label>
+        <input type="search" id="oq" placeholder="Search opportunities" aria-label="Search opportunities">
+      </div>
+      <p class="result-note" id="onote"></p>
+      <div class="tablewrap"><table class="opp" id="otable"></table></div>
+    </div>
+  </section>
+
+  <section id="tab-ideas" role="tabpanel" hidden>
+    <p class="hint">Every idea from every source, ranked. Move each one through the pipeline: pick a title, run a quick “which would you click?” test with a few people (+1 per vote), then script it. Your progress is saved in this browser; use Back up to keep a copy.</p>
+    <div class="filters">
+      <label>Source <select id="isrc"></select></label>
+      <label>Stage <select id="istage"></select></label>
+      <input type="search" id="iq" placeholder="Search ideas" aria-label="Search ideas">
+      <button class="btn" id="iadd" type="button">Add your own idea</button>
+      <button class="btn" id="iexport" type="button">Back up progress</button>
+      <label class="btn" style="cursor:pointer">Restore backup <input type="file" id="iimport" accept="application/json" hidden></label>
+    </div>
+    <p class="result-note" id="inote"></p>
+    <div id="ilist"></div>
+  </section>
+
+  <section id="tab-finder" role="tabpanel" hidden>
+    <nav class="subnav"><a href="#f-remakes">Remake finder</a><a href="#f-gaps">Content gaps</a><a href="#f-lift">Title formats that win</a><a href="#f-scout">Formats from other niches</a><a href="#f-cal">Season calendar</a></nav>
+    <div class="block" id="f-remakes"><h2>Remake finder</h2><p class="hint">Evergreen videos from the last 5 years in your pillars that still prove demand. Remake them fresher, sharper and for today’s viewer. “Still pulling” compares views per day now with the lifetime average (needs a few days of tracking).</p><div class="tablewrap"><table id="t-remakes"></table></div></div>
+    <div class="block" id="f-gaps"><h2>Content gaps</h2><p class="hint">Real YouTube searches (from autocomplete) checked against what currently ranks. High scores mean people search it, but the results are old, Shorts, or small channels winning: a gap you can own.</p><div class="tablewrap"><table id="t-gaps"></table></div></div>
+    <div class="block" id="f-lift"><h2>Title formats that win in your niche</h2><p class="hint">How much more often each title structure appears among outliers (1+ views per subscriber) than among all long-form videos in the last 60 days. Above 1.0× means the format over-performs right now.</p><div class="tablewrap"><table id="t-lift"></table></div></div>
+    <div class="block" id="f-scout"><h2>Formats from other niches</h2><p class="hint">Titles breaking out this month in neighbouring niches (fitness, money, study, learning…). Borrow the structure, not the topic.</p><div id="t-scout"></div></div>
+    <div class="block" id="f-cal"><h2>Season calendar</h2><p class="hint">Moments coming up in the next ~10 weeks. Edit the list in config.json → builder → calendar.</p><div class="tablewrap"><table id="t-cal"></table></div></div>
+    <p class="hint" id="f-run"></p>
+  </section>
+
+  <section id="tab-mine" role="tabpanel" hidden>
+    <div id="m-empty" class="empty" hidden>Your channel’s data appears after the next daily run.</div>
+    <div id="m-wrap">
+      <div class="stats-row" id="m-stats"></div>
+      <div class="block"><h2>Your outliers</h2><p class="hint">Your long-form videos that got 2× or more your median views. This is your audience telling you what to make more of. Sequel ideas appear after each Wednesday run.</p><div class="grid" id="m-outliers"></div></div>
+      <div class="block" id="m-studio"></div>
+      <div class="block"><h2>All recent uploads</h2><div class="tablewrap"><table id="m-table"></table></div></div>
+    </div>
+  </section>
+
+  <section id="tab-insights" role="tabpanel" hidden>
+    <p class="hint">A weekly AI write-up of what this week’s breakout videos have in common. It’s generated from the dashboard’s data, so treat it as a starting point and check the videos yourself.</p>
+    <div id="insights"></div>
+  </section>
+
+  <section id="tab-audience" role="tabpanel" hidden>
+    <div class="filters">
+      <input type="search" id="audq" placeholder="Search comments" aria-label="Search comments">
+      <label><input type="checkbox" id="audqs"> Questions only</label>
+    </div>
+    <p class="hint">Most-liked comments on today’s breakout videos. Questions are often your next video idea.</p>
+    <ul class="aud" id="audlist"></ul>
+  </section>
+
+  <section id="tab-saved" role="tabpanel" hidden>
+    <div class="filters">
+      <button class="btn" id="savedcsv" type="button">Export saved as CSV</button>
+      <button class="btn" id="savedclear" type="button">Remove all saved</button>
+    </div>
+    <p class="hint">Videos you saved with the Save button. They’re kept in this browser only, even after they leave the radar.</p>
+    <div class="grid" id="savedgrid"></div>
   </section>
 
   <section id="tab-keywords" role="tabpanel" hidden>
@@ -226,7 +365,16 @@ $("log").textContent = (D.log || []).join("\n");
 /* Tabs */
 const reddit = D.articles.filter(a => a.kind === "reddit");
 const reading = D.articles.filter(a => a.kind !== "reddit");
-const tabs = [["videos","Videos",D.videos.length],["keywords","Keywords",D.keywords.length],["channels","Channels",D.channels.length],["reading","Blogs & newsletters",reading.length],["reddit","Reddit",reddit.length]];
+const SAVE_KEY = "trend-radar-saved-v1";
+let saved = {};
+try { saved = JSON.parse(localStorage.getItem(SAVE_KEY) || "{}") || {}; } catch (e) { saved = {}; }
+function persistSaved(){ try { localStorage.setItem(SAVE_KEY, JSON.stringify(saved)); } catch (e) {} }
+const audience = D.audience || [], insights = D.insights || [];
+const OPP = D.opp || null;
+const CB = D.cb || null;
+const tabs = [["opportunities","Weekly opportunities",OPP ? OPP.items.filter(o => o.status !== "Dropped").length : 0],
+  ["ideas","Idea bank",CB && CB.ideas ? CB.ideas.length : 0],["finder","Topic finder",CB ? CB.remakes.length + CB.gaps.length : 0],
+  ["mine","My channel",CB && CB.mine ? CB.mine.outliers.length : 0],["videos","Videos",D.videos.length],["insights","Weekly insights",insights.length],["audience","Audience",audience.length],["saved","Saved",Object.keys(saved).length],["keywords","Keywords",D.keywords.length],["channels","Channels",D.channels.length],["reading","Blogs & newsletters",reading.length],["reddit","Reddit",reddit.length]];
 function showTab(id){
   tabs.forEach(([t]) => { $("tab-"+t).hidden = t !== id; $("btn-"+t).setAttribute("aria-selected", String(t === id)); });
 }
@@ -260,14 +408,21 @@ function card(v){
     v.duration ? el("span", {class: "dur", text: dur(v.duration)}) : null);
   const growth = v.growth == null ? el("span", {class: "k", text: "first check today"})
     : el("span", {class: v.growth > 0 ? "up" : "down"}, signed(v.growth) + " views/day since last check");
+  const cmts = v.comments || [];
   const intro = el("details", {},
-    el("summary", {text: v.intro ? "Intro and hook" : "Description hook"}),
+    el("summary", {text: (v.intro ? "Intro and hook" : "Description hook") + (cmts.length ? " · top comments" : "")}),
     v.intro ? el("div", {class: "lbl", text: "First minute (transcript)"}) : null,
     v.intro ? el("p", {text: v.intro}) : null,
     el("div", {class: "lbl", text: "Description opening"}),
-    el("p", {text: v.hook || "No description."}));
+    el("p", {text: v.hook || "No description."}),
+    cmts.length ? el("div", {class: "lbl", text: "Top comments"}) : null,
+    cmts.length ? el("ul", {class: "cmts"}, ...cmts.map(c => el("li", {}, c.text + " ", el("span", {class: "likes", text: "♥ " + fmt(c.likes)})))) : null);
+  const isSaved = !!saved[v.id];
+  const save = el("button", {class: "savebtn", type: "button", "aria-pressed": String(isSaved), title: "Save this video for later",
+    onclick: e => { toggleSave(v); const on = !!saved[v.id]; e.currentTarget.setAttribute("aria-pressed", String(on)); e.currentTarget.textContent = on ? "Saved" : "Save"; }},
+    isSaved ? "Saved" : "Save");
   return el("article", {class: "card"}, thumb,
-    el("h3", {}, el("a", {href: v.url, text: v.title})),
+    el("div", {class: "cardtop"}, el("h3", {}, el("a", {href: v.url, text: v.title})), save),
     el("div", {class: "ch"}, el("a", {href: v.channel_url, text: v.channel || "Unknown channel"}),
       el("span", {class: "tier " + v.tier, text: v.tier + (v.subs != null ? " · " + fmt(v.subs) : "")})),
     el("div", {class: "stats"},
@@ -276,7 +431,7 @@ function card(v){
       el("span", {}, el("b", {text: fmt(v.vpd)}), "/day"),
       el("span", {class: "k", text: "on radar " + v.radar_days + (v.radar_days === 1 ? " day" : " days")})),
     el("div", {class: "stats"}, growth, v.engagement != null ? el("span", {class: "k", text: v.engagement + "% engagement"}) : null),
-    el("div", {class: "srcs"}, ...v.sources.slice(0, 4).map(s => el("span", {text: s.replace(/^kw:/, "").replace(/^trending:/, "trending ")}))),
+    el("div", {class: "srcs"}, ...v.sources.slice(0, 4).map(s => el("span", {text: s.replace(/^kw:/, "").replace(/^pillar:/, "").replace(/^trending:/, "trending ")}))),
     intro);
 }
 function renderVideos(){
@@ -290,14 +445,15 @@ function renderVideos(){
   grid.append(frag);
 }
 vf.forEach(id => $(id).addEventListener(id === "q" ? "input" : "change", renderVideos));
-$("csv").addEventListener("click", () => {
+function exportCsv(list, name){
   const cols = ["title","channel","tier","subs","views","age_days","vpd","outlier","growth","radar_days","url"];
   const esc = x => { let s = x == null ? "" : String(x); if (/^[=+\-@]/.test(s)) s = "'" + s; return '"' + s.replace(/"/g, '""') + '"'; };
-  const csv = [cols.join(",")].concat(currentVideos.map(v => cols.map(c => esc(v[c])).join(","))).join("\n");
-  const a = el("a", {download: "trend-radar-" + D.today + ".csv"});
+  const csv = [cols.join(",")].concat(list.map(v => cols.map(c => esc(v[c])).join(","))).join("\n");
+  const a = el("a", {download: name + "-" + D.today + ".csv"});
   a.href = URL.createObjectURL(new Blob([csv], {type: "text/csv"}));
   document.body.append(a); a.click(); a.remove();
-});
+}
+$("csv").addEventListener("click", () => exportCsv(currentVideos, "trend-radar"));
 
 /* Sortable tables */
 function table(node, cols, rows, initial){
@@ -366,8 +522,323 @@ function renderReading(){
 }
 ["aq","akind"].forEach(id => $(id).addEventListener(id === "aq" ? "input" : "change", renderReading));
 
+/* Saved */
+function toggleSave(v){
+  if (saved[v.id]) delete saved[v.id];
+  else saved[v.id] = Object.assign({}, v, {saved_on: D.today});
+  persistSaved(); updateSavedCount(); renderSaved();
+}
+function updateSavedCount(){ const b = $("btn-saved"); if (b) b.querySelector(".count").textContent = Object.keys(saved).length; }
+function renderSaved(){
+  const g = $("savedgrid"); g.replaceChildren();
+  const list = Object.values(saved).sort((a, b) => (b.saved_on || "").localeCompare(a.saved_on || ""));
+  if (!list.length) { g.append(el("div", {class: "empty", text: "Nothing saved yet. Use the Save button on any video card to collect ideas here."})); return; }
+  list.forEach(v => g.append(card(v)));
+}
+$("savedcsv").addEventListener("click", () => exportCsv(Object.values(saved), "saved-ideas"));
+$("savedclear").addEventListener("click", () => { if (confirm("Remove all saved videos from this browser?")) { saved = {}; persistSaved(); updateSavedCount(); renderSaved(); renderVideos(); } });
+
+/* Audience */
+function renderAudience(){
+  const q = $("audq").value.trim().toLowerCase(), qs = $("audqs").checked;
+  const list = audience.filter(a => (!qs || a.is_question) && (!q || (a.text + " " + a.video).toLowerCase().includes(q)));
+  const node = $("audlist"); node.replaceChildren();
+  if (!list.length) { node.append(el("li", {class: "empty", text: audience.length ? "No comments match. Clear the search or untick Questions only." : "Comments appear after the next full run."})); return; }
+  list.slice(0, 400).forEach(a => node.append(el("li", {},
+    el("div", {class: "txt", text: a.text}),
+    el("div", {class: "meta"}, "♥ " + fmt(a.likes) + " · on ", el("a", {href: a.url, text: a.video}), a.outlier ? " (" + a.outlier.toFixed(1) + "× avg)" : ""))));
+}
+["audq","audqs"].forEach(id => $(id).addEventListener(id === "audq" ? "input" : "change", renderAudience));
+
+/* Weekly opportunities */
+const PILLARS = ["Productivity","Organization","Planning","Goals and Goal Achievement","Time Management","Focus and Deep Work","Discipline and Consistency","Habits and Routines","Procrastination and Execution","Life Reset","Digital Productivity","Personal Productivity Systems","Practical Personal Growth"];
+const by = k => (a, b) => (b[k] ?? -Infinity) - (a[k] ?? -Infinity);
+const VIEWS = [
+  ["This Week’s Top 10", o => o.in_top10],
+  ["All qualified this week", o => o.status !== "Dropped"],
+  ["Produce Now", o => o.decision === "Produce Now"],
+  ["High-Confidence Opportunities", o => o.decision === "High-Confidence Opportunity"],
+  ["Strong Opportunities", o => o.decision === "Strong Opportunity"],
+  ["Highest Opportunity Score", o => o.status !== "Dropped", by("score")],
+  ["Highest VPH", o => o.status !== "Dropped", by("vph")],
+  ["Highest Views-to-Subscriber Ratio", o => o.status !== "Dropped" && o.vs_ratio != null, by("vs_ratio")],
+  ["Strongest Channel Outliers", o => o.status !== "Dropped" && o.cpm != null, by("cpm")],
+  ["New This Week", o => o.status === "New"], ["Rising", o => o.status === "Rising"], ["Holding", o => o.status === "Holding"],
+  ["Falling", o => o.status === "Falling"], ["Recovered", o => o.status === "Recovered"], ["Dropped", o => o.status === "Dropped"],
+  ["Micro-Channel Breakouts", o => o.size === "Micro" && o.status !== "Dropped"],
+  ["Small-Channel Breakouts", o => o.size === "Small" && o.status !== "Dropped"],
+  ["Medium-Channel Breakouts", o => o.size === "Medium" && o.status !== "Dropped"],
+  ["Immediate Signals", o => o.stage === "Immediate Signal"], ["Emerging Viral", o => o.stage === "Emerging Viral"],
+  ["Validated Viral", o => o.stage === "Validated Viral"], ["Extended Validation", o => o.stage === "Extended Validation"],
+  ["Emerging Trends", o => o.trend === "Emerging Trend"], ["Validated Trends", o => o.trend === "Validated Trend"],
+  ["Evergreen Viral Patterns", o => o.trend === "Evergreen Viral Pattern"],
+  ["Low-Cost Opportunities", o => o.production_cost === "Low" && o.status !== "Dropped"],
+  ["Fast-to-Produce Opportunities", o => o.production_time === "Low" && o.status !== "Dropped"],
+  ...PILLARS.map(p => [p, o => o.cluster === p && o.status !== "Dropped"]),
+  ["Skip", o => o.decision === "Skip"]
+];
+const num = (x, suffix) => x == null ? "–" : (typeof x === "number" && !Number.isInteger(x) ? x.toFixed(2) : String(x)) + (suffix || "");
+function kv(pairs){ const dl = el("dl", {class: "kv"}); pairs.forEach(([k, v]) => { if (v == null || v === "" || (Array.isArray(v) && !v.length)) return; dl.append(el("dt", {text: k}), el("dd", {}, Array.isArray(v) ? v.join(" · ") : String(v))); }); return dl; }
+function section(title, pairs){ return el("div", {}, el("h4", {text: title}), kv(pairs)); }
+function oppDetail(o){
+  const d = o.deep || {}, r = d.recommendation || {}, w = d.why_working || {}, t = d.title_analysis || {}, th = d.thumbnail_analysis || {},
+        h = d.hook_analysis || {}, en = d.engagement || {}, rp = d.replication || {}, s = o.scores || {}, p = o.penalties || {}, ev = o.evidence || {};
+  const cols = el("div", {class: "cols"});
+  cols.append(
+    section("Performance", [["Views", fmt(o.views) + " (Verified)"], ["VPH", fmt(o.vph) + " (Calculated)"], ["Views ÷ subscribers", num(o.vs_ratio) + " (" + (ev.vs_ratio || "") + ")"],
+      ["Channel Performance Multiple", o.cpm != null ? o.cpm + "× " + o.cpm_class + " (Calculated from " + o.baseline_n + " comparable videos)" : "Unavailable"],
+      ["vidIQ outlier score", "Unavailable"], ["Engagement", o.eng_rate_pct != null ? o.eng_rate_pct + "% vs channel " + num(o.channel_eng_pct, "%") : "Unavailable"],
+      ["Momentum", o.momentum ? o.momentum.label + (o.momentum.recent_vph != null ? " (last 7 days " + fmt(o.momentum.recent_vph) + "/h)" : "") : ""],
+      ["Stage", o.stage], ["Trend", o.trend], ["Topic", o.topic_key], ["Data confidence", o.confidence]]),
+    section("Score " + o.score + "/100", [["VPH and momentum", s.vph + "/25"], ["Channel outlier strength", s.outlier + "/20"], ["Views ÷ subs", s.vs + "/15"],
+      ["Channel alignment", s.alignment + "/15 (" + (ev.alignment || "") + ")"], ["Packaging", s.packaging + "/10"], ["Replicability", s.replicability + "/10"], ["Recency", s.recency + "/5"],
+      ["Penalties", "−" + o.penalty_total + " " + Object.entries(p).filter(([k, v]) => v).map(([k, v]) => k.replace("_", " ") + " " + v).join(", ")],
+      ["Conditions met", o.conditions_met], ["Why not Produce Now", o.produce_now_fails]]),
+    section("Your original version", [["Concept", r.concept], ["Why it’s worth making", r.why_worth_it], ["Target viewer", r.target_viewer], ["Viewer problem", r.viewer_problem || o.viewer_problem],
+      ["Transformation", r.transformation || o.transformation], ["Unique angle", r.unique_angle], ["Differentiation", r.differentiation], ["Title", r.title], ["Backup title", r.backup_title],
+      ["Thumbnail", r.thumbnail_concept], ["Thumbnail text", r.thumbnail_text], ["Opening hook", r.hook], ["First 30 seconds", r.first_30s], ["Sections", r.sections],
+      ["Length", r.length], ["Format", r.format], ["Research needed", r.research], ["Visuals", r.visuals],
+      ["Production", [o.production_difficulty + " difficulty", o.production_cost + " cost", (o.production_hours || "?") + " hours"]],
+      ["Main risk", r.risk], ["Risk reduction", r.risk_reduction], ["Evidence", r.evidence], ["Confidence", r.confidence]]),
+    section("Why it’s working", [["Audience problem", w.audience_problem], ["Transformation", w.desired_transformation], ["Emotional trigger", w.emotional_trigger], ["Why people click", w.why_clicking],
+      ["Why now", w.why_timely], ["Why unusual", w.why_unusual], ["Main driver", w.main_driver], ["Type", w.success_type], ["Still active", w.still_active]]),
+    section("Title", [["Formula", t.formula], ["Promise", t.promise], ["Curiosity gap", t.curiosity_gap], ["Why it works", t.why_it_works], ["Adapt", t.adapt], ["Don’t copy", t.do_not_copy]]),
+    section("Thumbnail", [["Concept", th.visual_concept], ["Text", th.thumbnail_text], ["Mobile readability", th.mobile_readability], ["Why it earns clicks", th.why_clicks], ["Adapt", th.adapt], ["Don’t copy", th.do_not_copy]]),
+    section("Hook (" + (h.basis === "transcript" ? "from transcript" : "inferred from title, thumbnail and description") + ")", [["Opening line", h.opening_line], ["First 30 seconds", h.first_30s], ["Promise", h.promise], ["Stakes", h.stakes], ["Curiosity loop", h.curiosity_loop], ["Retention", h.retention_mechanism]]),
+    section("Engagement and shareability", [["Read", en.read], ["Basis", en.basis], ["Comment pattern", en.comment_pattern], ["Shareability driver", en.shareability_driver || o.shareability], ["Risk", en.shareability_risk]]),
+    section("Replication", [["Micro channel", rp.micro], ["Small channel", rp.small], ["Talking head", rp.talking_head], ["Faceless", rp.faceless], ["Must change", rp.what_must_change], ["Difficulty", rp.difficulty]])
+  );
+  if (!o.deep) cols.append(el("p", {class: "hint", text: "Deep analysis runs for the Top 10, rising videos and exceptional small-channel outliers when an AI key is set."}));
+  if (o.history && o.history.length) {
+    cols.append(el("div", {}, el("h4", {text: "Week-by-week history"}), el("table", {}, el("tbody", {}, ...o.history.map(x => el("tr", {},
+      el("td", {text: x.date}), el("td", {text: x.status || ""}), el("td", {text: x.rank ? "#" + x.rank : "–"}), el("td", {text: "score " + num(x.score)}), el("td", {text: fmt(x.vph) + "/h"})))))));
+  }
+  return cols;
+}
+function renderOpp(){
+  if (!OPP) { $("opp-empty").hidden = false; $("opp-wrap").hidden = true; return; }
+  const sm = OPP.summary || {}, mc = OPP.my_channel;
+  $("opp-meta").replaceChildren("Week of " + OPP.day + " · " + (sm.passing_qualification || 0) + " qualified from " + fmt(sm.videos_reviewed || 0) + " videos reviewed · " +
+    (sm.keyword_searches || 0) + " searches across " + (sm.clusters_searched || 0) + " pillars" + (mc && mc.subs != null ? " · your channel: " + fmt(mc.subs) + " subscribers, median " + fmt(mc.median_longform_views) + " views per long video" : "") + " · ",
+    el("a", {href: "reports/" + OPP.day + ".html", text: "open this week’s report"}));
+  if (location.protocol === "file:") $("opp-meta").lastChild.removeAttribute("href");
+  const items = OPP.items, top = items.find(o => o.in_top10);
+  const pick = $("opp-pick"); pick.replaceChildren();
+  if (top) {
+    const r = (top.deep || {}).recommendation || {};
+    pick.append(el("div", {class: "pick"},
+      el("a", {href: top.url}, el("img", {src: top.thumb, alt: ""})),
+      el("div", {}, el("h2", {text: "The video to make this week"}),
+        el("div", {class: "lead", text: r.title || top.title}),
+        kv([["Based on", top.title + " — " + top.channel + " (" + top.size + ", " + fmt(top.subs) + " subs)"], ["Score", top.score + "/100 · " + top.decision + " · confidence " + top.confidence],
+          ["Why first", r.why_worth_it], ["Evidence", r.evidence || (top.conditions_met || []).join(" · ")], ["Backup title", r.backup_title], ["Thumbnail", r.thumbnail_concept],
+          ["Thumbnail text", r.thumbnail_text], ["Hook", r.hook], ["Structure", r.sections], ["Length", r.length],
+          ["Time and cost", (top.production_hours || "?") + " hours · " + top.production_cost + " cost"], ["Main risk", r.risk], ["Differentiate by", r.differentiation]]))));
+  }
+  const sel = $("oview");
+  if (!sel.options.length) VIEWS.forEach(([label], i) => sel.append(el("option", {value: String(i), text: label})));
+  const [label, fn, sorter] = VIEWS[+sel.value || 0];
+  const q = $("oq").value.trim().toLowerCase();
+  let list = items.filter(fn).filter(o => !q || (o.title + " " + o.channel + " " + o.topic_key + " " + o.cluster).toLowerCase().includes(q));
+  list = sorter ? list.slice().sort(sorter) : list;
+  $("onote").textContent = list.length + " in “" + label + "”. Select a row for the full research.";
+  const head = ["Rank","Status","Video","Size","Age","VPH","Views ÷ subs","Channel multiple","Engagement","Score","Decision","Pillar"];
+  const tbody = el("tbody");
+  list.forEach(o => {
+    const detail = el("tr", {class: "detail", hidden: true}, el("td", {colspan: String(head.length)}));
+    const row = el("tr", {class: "row", tabindex: "0", onclick: () => toggle(), onkeydown: e => { if (e.key === "Enter") toggle(); }},
+      el("td", {text: o.rank ? "#" + o.rank + (o.prev_rank ? " (was #" + o.prev_rank + ")" : "") : "–"}),
+      el("td", {}, el("span", {class: "st " + o.status, text: o.status})),
+      el("td", {}, el("div", {class: "mini"}, el("img", {src: o.thumb, alt: "", loading: "lazy"}), el("div", {}, el("b", {}, el("a", {href: o.url, text: o.title})), el("span", {text: o.channel})))),
+      el("td", {text: o.size + (o.subs != null ? " · " + fmt(o.subs) : "")}),
+      el("td", {text: Math.round(o.age_days) + " d"}), el("td", {class: "num", text: fmt(o.vph)}),
+      el("td", {class: "num", text: num(o.vs_ratio)}), el("td", {class: "num", text: o.cpm != null ? o.cpm + "×" : "–"}),
+      el("td", {class: "num", text: num(o.eng_rate_pct, "%")}), el("td", {class: "num"}, el("b", {text: String(o.score)})),
+      el("td", {class: "dec " + (o.decision || "").replace(/\s/g, ""), text: o.decision}), el("td", {text: o.cluster}));
+    function toggle(){ if (detail.hidden && !detail.firstChild.firstChild) detail.firstChild.append(oppDetail(o)); detail.hidden = !detail.hidden; }
+    tbody.append(row, detail);
+  });
+  $("otable").replaceChildren(el("thead", {}, el("tr", {}, ...head.map(h => el("th", {text: h})))), tbody);
+  if (!list.length) $("otable").append(el("tbody", {}, el("tr", {}, el("td", {colspan: String(head.length), text: "Nothing in this view this week."}))));
+}
+$("oview").addEventListener("change", renderOpp);
+$("oq").addEventListener("input", renderOpp);
+
+/* ---------- Idea bank ---------- */
+const STAGES = ["Idea","Packaging","Testing","Scripting","Filming","Editing","Published","Dropped"];
+const IDEA_KEY = "trend-radar-ideas-v1";
+let ist = {};
+try { ist = JSON.parse(localStorage.getItem(IDEA_KEY) || "{}") || {}; } catch (e) { ist = {}; }
+ist._custom = ist._custom || [];
+function saveIst(){ try { localStorage.setItem(IDEA_KEY, JSON.stringify(ist)); } catch (e) {} }
+function allIdeas(){ return ((CB && CB.ideas) || []).concat(ist._custom); }
+function ideaCard(i){
+  const st = ist[i.id] = ist[i.id] || {stage: "Idea", votes: {}, notes: "", chosen: null};
+  const titles = (i.titles && i.titles.length ? i.titles : [i.title]);
+  const tl = el("ul", {class: "tlist"});
+  titles.forEach((t, k) => {
+    const li = el("li", {class: st.chosen === k ? "chosen" : ""},
+      el("button", {type: "button", title: "Count one vote in your click test", onclick: () => { st.votes[k] = (st.votes[k] || 0) + 1; saveIst(); renderIdeas(); }}, "+1"),
+      el("span", {text: (st.votes[k] ? "(" + st.votes[k] + ") " : "")}),
+      el("span", {text: t}),
+      el("button", {type: "button", onclick: () => { st.chosen = k; if (st.stage === "Idea") st.stage = "Packaging"; saveIst(); renderIdeas(); }}, st.chosen === k ? "Chosen" : "Use"));
+    tl.append(li);
+  });
+  const stage = el("select", {"aria-label": "Stage", onchange: e => { st.stage = e.target.value; saveIst(); renderIdeas(); }}, ...STAGES.map(x => { const o = el("option", {value: x, text: x}); if (x === st.stage) o.selected = true; return o; }));
+  const notes = el("textarea", {placeholder: "Your angle, story, notes for the script…", onchange: e => { st.notes = e.target.value; saveIst(); }});
+  notes.value = st.notes || "";
+  const thumbs = (i.thumbnails || []).map(t => el("li", {}, (t.visual || "") + (t.text ? " — text: “" + t.text + "”" : "") + (t.emotion ? " (" + t.emotion + ")" : "")));
+  return el("article", {class: "idea"},
+    el("div", {class: "idea-top"}, el("span", {class: "src", text: i.source}), i.score != null ? el("span", {class: "mult", text: Math.round(i.score)}) : null,
+      i.pillar ? el("span", {class: "k", text: i.pillar}) : null, el("span", {style: "margin-left:auto"}, "Stage ", stage)),
+    el("h3", {text: st.chosen != null && titles[st.chosen] ? titles[st.chosen] : i.title}),
+    i.promise ? el("p", {class: "why"}, el("b", {text: "Promise: "}), i.promise) : null,
+    i.why ? el("p", {class: "why", text: i.why}) : null,
+    el("p", {class: "evi"}, i.evidence || "", i.link ? " · " : "", i.link ? el("a", {href: i.link, text: "source"}) : null),
+    el("div", {class: "cols"},
+      el("div", {}, el("h4", {text: i.titles && i.titles.length ? "Title options (Inferred)" : "Title"}), tl),
+      el("div", {}, el("h4", {text: "Thumbnail concepts"}), thumbs.length ? el("ul", {class: "tlist"}, ...thumbs) : el("p", {class: "hint", text: "Appear after the Wednesday run when an AI key is set."}),
+        i.why_click ? el("p", {class: "hint", text: "Why people click: " + i.why_click}) : null),
+      el("div", {}, el("h4", {text: "Notes"}), notes)));
+}
+function renderIdeas(){
+  const src = $("isrc"), stg = $("istage"), list = allIdeas();
+  if (!src.options.length) {
+    ["All sources"].concat([...new Set(list.map(i => i.source))]).forEach(x => src.append(el("option", {value: x === "All sources" ? "" : x, text: x})));
+    ["Active (not Published or Dropped)"].concat(STAGES).forEach(x => stg.append(el("option", {value: x.startsWith("Active") ? "" : x, text: x})));
+  }
+  const q = $("iq").value.trim().toLowerCase();
+  const shown = list.filter(i => {
+    const stage = (ist[i.id] || {}).stage || "Idea";
+    if (src.value && i.source !== src.value) return false;
+    if (stg.value ? stage !== stg.value : ["Published","Dropped"].includes(stage)) return false;
+    return !q || ((i.title || "") + " " + (i.why || "") + " " + (i.titles || []).join(" ")).toLowerCase().includes(q);
+  });
+  $("inote").textContent = shown.length + " ideas" + (CB && CB.builder_run ? " · last builder run " + CB.builder_run.day : "");
+  const box = $("ilist"); box.replaceChildren();
+  if (!shown.length) box.append(el("p", {class: "empty", text: list.length ? "No ideas match. Change the filters." : "The Idea bank fills after the first Wednesday or Sunday run. You can add your own ideas now."}));
+  shown.forEach(i => box.append(ideaCard(i)));
+}
+["isrc","istage"].forEach(id => $(id).addEventListener("change", renderIdeas));
+$("iq").addEventListener("input", renderIdeas);
+$("iadd").addEventListener("click", () => {
+  const t = prompt("Your idea (a working title is fine):");
+  if (!t || !t.trim()) return;
+  ist._custom.push({id: "own:" + Date.now(), source: "Your idea", title: t.trim().slice(0, 200), score: null, why: "", evidence: ""});
+  saveIst(); $("isrc").replaceChildren(); renderIdeas();
+});
+$("iexport").addEventListener("click", () => {
+  const a = el("a", {download: "idea-bank-backup-" + D.today + ".json"});
+  a.href = URL.createObjectURL(new Blob([JSON.stringify(ist, null, 2)], {type: "application/json"}));
+  document.body.append(a); a.click(); a.remove();
+});
+$("iimport").addEventListener("change", e => {
+  const f = e.target.files[0]; if (!f) return;
+  f.text().then(txt => { try { const d = JSON.parse(txt); if (d && typeof d === "object" && !Array.isArray(d)) { ist = d; ist._custom = Array.isArray(ist._custom) ? ist._custom : []; saveIst(); $("isrc").replaceChildren(); renderIdeas(); } } catch (err) { alert("That file isn’t a valid Idea bank backup."); } });
+});
+
+/* ---------- Topic finder ---------- */
+function simpleTable(node, head, rows){
+  node.replaceChildren(el("thead", {}, el("tr", {}, ...head.map(h => el("th", {text: h})))),
+    el("tbody", {}, ...(rows.length ? rows : [el("tr", {}, el("td", {colspan: String(head.length), text: "Nothing yet. This fills after the Wednesday builder run."}))])));
+}
+function mini(v){ return el("div", {class: "mini"}, el("img", {src: v.thumb, alt: "", loading: "lazy"}), el("div", {}, el("b", {}, el("a", {href: v.url, text: v.title})), el("span", {text: (v.channel || "") + (v.size ? " · " + v.size : "")}))); }
+function renderFinder(){
+  if (!CB) return;
+  simpleTable($("t-remakes"), ["Video","Pillar","Views","Age","Still pulling","Views ÷ subs","Score","Your remake (Inferred)"],
+    CB.remakes.map(v => el("tr", {}, el("td", {}, mini(v)), el("td", {text: v.pillar}), el("td", {class: "num", text: fmt(v.views)}),
+      el("td", {text: v.age_years + " yrs"}), el("td", {text: v.current_vpd != null ? fmt(v.current_vpd) + "/day now vs " + fmt(v.lifetime_vpd) + "/day lifetime" : "measuring…"}),
+      el("td", {class: "num", text: num(v.vs_ratio)}), el("td", {class: "num"}, el("b", {text: String(v.remake_score)})),
+      el("td", {style: "white-space:normal;min-width:240px", text: v.angle && v.angle.title ? v.angle.title + " — " + (v.angle.angle || "") : ""}))));
+  simpleTable($("t-gaps"), ["Search phrase","Gap score","Typical views of results","Typical age","Results from last year","Shorts in results","Small channels winning","Top result"],
+    CB.gaps.map(g => el("tr", {}, el("td", {}, el("b", {text: g.phrase})), el("td", {class: "num"}, el("b", {text: String(g.gap_score)})),
+      el("td", {class: "num", text: fmt(g.median_views)}), el("td", {text: g.median_age_days != null ? (g.median_age_days / 365).toFixed(1) + " yrs" : "–"}),
+      el("td", {class: "num", text: g.recent_results}), el("td", {class: "num", text: g.shorts_in_results}), el("td", {class: "num", text: g.small_channel_winners}),
+      el("td", {style: "white-space:normal;min-width:220px"}, g.top_result ? el("a", {href: "https://www.youtube.com/watch?v=" + g.top_result.id, text: g.top_result.title}) : "–"))));
+  simpleTable($("t-lift"), ["Title format","Lift among outliers","Videos","Outliers","Examples"],
+    CB.format_lift.map(f => el("tr", {}, el("td", {}, el("b", {text: f.format})), el("td", {class: "num", text: f.lift != null ? f.lift + "×" : "–"}),
+      el("td", {class: "num", text: f.videos}), el("td", {class: "num", text: f.outliers}), el("td", {style: "white-space:normal;min-width:300px", text: f.examples.join(" · ")}))));
+  const sc = $("t-scout"); sc.replaceChildren();
+  if (!CB.scout.length) sc.append(el("p", {class: "empty", text: "Nothing yet. This fills after the Wednesday builder run."}));
+  CB.scout.forEach(v => sc.append(el("div", {class: "idea"}, el("div", {class: "idea-top"}, el("span", {class: "src", text: v.query}), el("span", {class: "mult", text: v.vs_ratio + "× subs"}),
+    ...v.formats.map(f => el("span", {class: "k", text: f}))), mini(v),
+    v.ai && v.ai.formula ? el("p", {class: "why"}, el("b", {text: "Formula: "}), v.ai.formula) : null,
+    v.ai && v.ai.adaptations ? el("ul", {class: "tlist"}, ...v.ai.adaptations.map(t => el("li", {text: "→ " + t}))) : null)));
+  simpleTable($("t-cal"), ["Moment","Date","Start by","Publish by","Pillars","Angle"],
+    CB.calendar.map(c => el("tr", {}, el("td", {}, el("b", {text: c.name})), el("td", {text: c.date + " (" + c.days_away + " days)"}), el("td", {text: c.start_by}),
+      el("td", {text: c.publish_by}), el("td", {style: "white-space:normal", text: c.pillars.join(", ")}), el("td", {style: "white-space:normal", text: c.angle}))));
+  const br = CB.builder_run;
+  $("f-run").textContent = br ? "Last builder run " + br.day + ": " + br.remake_searches + " remake searches, " + br.gap_checks + " gap checks, " + br.scout_searches + " scout searches. " + (br.limitations || []).join(" ") : "The builder runs every Wednesday morning.";
+}
+
+/* ---------- My channel ---------- */
+function renderMine(){
+  const m = CB && CB.mine;
+  if (!m) { $("m-empty").hidden = false; $("m-wrap").hidden = true; return; }
+  const ch = m.channel || {};
+  $("m-stats").replaceChildren(...[[fmt(ch.subs), "subscribers"], [fmt(ch.views), "total views"], [fmt(m.median_long_views), "median views per long video"],
+    [String(m.outliers.length), "outliers (2×+)"], [CB.studio_connected ? "Connected" : "Not connected", "Studio data"]]
+    .map(([b, t]) => el("div", {}, el("b", {text: b}), el("span", {text: t}))));
+  const og = $("m-outliers"); og.replaceChildren();
+  if (!m.outliers.length) og.append(el("p", {class: "empty", text: "No 2× outliers among your recent long-form videos yet. Every one you get becomes a sequel opportunity here."}));
+  m.outliers.forEach(v => og.append(el("article", {class: "card"},
+    el("a", {class: "thumb", href: v.url}, el("img", {src: v.thumb, alt: "", loading: "lazy"}), el("span", {class: "stamp"}, v.multiple + "×", el("small", {text: "your median"}))),
+    el("h3", {}, el("a", {href: v.url, text: v.title})),
+    el("div", {class: "stats"}, el("span", {}, el("b", {text: fmt(v.views)}), " views"), el("span", {class: "k", text: v.published}), v.views_7d != null ? el("span", {class: "up", text: "+" + fmt(v.views_7d) + " last 7 days"}) : null),
+    v.sequels && v.sequels.length ? el("details", {}, el("summary", {text: "Sequel ideas (Inferred)"}), el("ul", {class: "cmts"}, ...v.sequels.map(s => el("li", {}, el("b", {text: (s.type || "") + ": "}), (s.title || "") + (s.why ? " — " + s.why : ""))))) : null)));
+  simpleTable($("m-table"), ["Video","Published","Length","Views","× your median","Last 7 days","Title formats"],
+    m.videos.slice(0, 50).map(v => el("tr", {}, el("td", {style: "white-space:normal;min-width:260px"}, el("a", {href: v.url, text: v.title})), el("td", {text: v.published}),
+      el("td", {text: dur(v.duration_s)}), el("td", {class: "num", text: fmt(v.views)}), el("td", {class: "num", text: v.multiple != null ? v.multiple + "×" : (v.long ? "–" : "Short")}),
+      el("td", {class: "num", text: v.views_7d != null ? "+" + fmt(v.views_7d) : "–"}), el("td", {style: "white-space:normal", text: v.formats.join(", ")}))));
+  const sb = $("m-studio"); sb.replaceChildren();
+  const S = CB.studio;
+  if (!S) {
+    sb.append(el("h2", {text: "Studio data"}), el("div", {class: "note-box"}, el("p", {text: "Connect your channel once to see retention, the searches that bring people to you, traffic sources and click-through rate. Follow “Connect your Studio data” in the README; it takes about 15 minutes."})));
+    return;
+  }
+  const ok = x => Array.isArray(x) ? x : [];
+  const daily = ok(S.daily28), views28 = daily.reduce((a, r) => a + (r.views || 0), 0), net = daily.reduce((a, r) => a + (r.subscribersGained || 0) - (r.subscribersLost || 0), 0);
+  sb.append(el("h2", {text: "Studio data (last 28–90 days, as of " + S.day + ")"}),
+    el("div", {class: "stats-row"}, el("div", {}, el("b", {text: fmt(views28)}), el("span", {text: "views, last 28 days"})), el("div", {}, el("b", {text: (net >= 0 ? "+" : "") + fmt(net)}), el("span", {text: "net subscribers, last 28 days"}))));
+  const two = el("div", {class: "two"});
+  const st = el("div", {}, el("h4", {text: "Searches that brought viewers to you"}));
+  const stt = el("table"); simpleTable(stt, ["Search term","Views"], ok(S.search_terms28).map(r => el("tr", {}, el("td", {text: r.insightTrafficSourceDetail}), el("td", {class: "num", text: fmt(r.views)}))));
+  st.append(el("div", {class: "tablewrap"}, stt), el("p", {class: "hint", text: "Each of these is a topic your audience already looks for. Make the next video for the same search."}));
+  const tr = el("div", {}, el("h4", {text: "Where your views come from"}));
+  const trt = el("table"); simpleTable(trt, ["Source","Views","Watch minutes"], ok(S.traffic28).map(r => el("tr", {}, el("td", {text: (r.insightTrafficSourceType || "").replace(/_/g, " ").toLowerCase()}), el("td", {class: "num", text: fmt(r.views)}), el("td", {class: "num", text: fmt(r.estimatedMinutesWatched)}))));
+  tr.append(el("div", {class: "tablewrap"}, trt));
+  two.append(st, tr); sb.append(two);
+  const vt = el("table");
+  const imp = {}; ok(S.impressions90).forEach(r => imp[r.video] = r);
+  simpleTable(vt, ["Video","Views","Avg % watched","Avg view","Subs gained","Impressions","Click-through"],
+    ok(S.videos90).map(r => el("tr", {}, el("td", {style: "white-space:normal;min-width:240px", text: r.title}), el("td", {class: "num", text: fmt(r.views)}),
+      el("td", {class: "num", text: r.averageViewPercentage != null ? r.averageViewPercentage.toFixed(1) + "%" : "–"}), el("td", {class: "num", text: dur(Math.round(r.averageViewDuration || 0))}),
+      el("td", {class: "num", text: fmt(r.subscribersGained)}), el("td", {class: "num", text: imp[r.video] ? fmt(imp[r.video].videoThumbnailImpressions) : "–"}),
+      el("td", {class: "num", text: imp[r.video] && imp[r.video].videoThumbnailImpressionsClickRate != null ? (imp[r.video].videoThumbnailImpressionsClickRate * (imp[r.video].videoThumbnailImpressionsClickRate < 1 ? 100 : 1)).toFixed(1) + "%" : "–"}))));
+  sb.append(el("h4", {text: "Your videos, last 90 days"}), el("div", {class: "tablewrap"}, vt),
+    el("p", {class: "hint", text: Array.isArray(S.impressions90) ? "" : "Impressions and click-through aren’t available through the API for this channel; check them in YouTube Studio."}));
+}
+
+/* Insights: plain text, rendered safely as text */
+function renderInsights(){
+  const box = $("insights"); box.replaceChildren();
+  if (!insights.length) { box.append(el("p", {class: "empty", text: "No weekly insights yet. Add a GEMINI_API_KEY or ANTHROPIC_API_KEY secret in GitHub; the first write-up appears on the next run, then every Monday."})); return; }
+  insights.forEach(ins => {
+    const wrap = el("article", {class: "insight"}, el("h3", {text: "Week of " + ins.day}), el("div", {class: "meta", text: "Written by " + ins.model}));
+    let ul = null;
+    ins.text.split(/\n+/).map(l => l.trim()).filter(Boolean).forEach(line => {
+      const clean = line.replace(/^[#*\s]+/, "").replace(/\*\*/g, "");
+      if (/^[-•*]\s+/.test(line)) { if (!ul) { ul = el("ul"); wrap.append(ul); } ul.append(el("li", {text: clean.replace(/^[-•]\s*/, "")})); }
+      else if (clean.length < 70 && !/[.!?]$/.test(clean)) { ul = null; wrap.append(el("h4", {text: clean})); }
+      else { ul = null; wrap.append(el("p", {text: clean})); }
+    });
+    box.append(wrap);
+  });
+}
+
 renderVideos(); renderChannels(); renderReading(); articleList($("rlist"), reddit);
-showTab("videos");
+renderSaved(); renderAudience(); renderInsights(); renderOpp(); renderIdeas(); renderFinder(); renderMine();
+showTab(location.hash === "#videos" ? "videos" : (OPP && OPP.items.length) || location.hash === "#opportunities" ? "opportunities" : "videos");
 })();
 </script>
 </body>
