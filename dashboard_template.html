@@ -1,0 +1,374 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Self-Improvement Trend Radar</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#F1F3EC; --surface:#FFFFFF; --ink:#1E2B24; --muted:#5F6B63; --line:#D9DED3;
+  --sage:#3D6B52; --sage-soft:#E1EBE2; --marigold:#E3A008; --marigold-ink:#3A2A00;
+  --up:#2F7D4F; --down:#B4442E; --new:#3557A8;
+  color-scheme:light;
+}
+@media (prefers-color-scheme:dark){
+  :root{
+    --paper:#141A16; --surface:#1C241F; --ink:#E6ECE5; --muted:#9AA69D; --line:#2E3A33;
+    --sage:#8CC2A0; --sage-soft:#24332A; --marigold:#F2B634; --marigold-ink:#2A1E00;
+    --up:#6FCB92; --down:#F08A72; --new:#8FAEF5;
+    color-scheme:dark;
+  }
+}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{background:var(--paper);color:var(--ink);font:15px/1.5 "Instrument Sans",system-ui,-apple-system,"Segoe UI",sans-serif;font-variant-numeric:tabular-nums}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--sage);outline-offset:2px}
+.wrap{max-width:1440px;margin:0 auto;padding:28px 24px 64px}
+header.top{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:16px;margin-bottom:22px}
+h1{font:700 clamp(28px,4vw,44px)/1.05 "Bricolage Grotesque",Georgia,serif;margin:0;letter-spacing:-0.02em}
+.sub{color:var(--muted);margin-top:6px}
+.pulse{display:flex;gap:22px;flex-wrap:wrap}
+.pulse div{min-width:90px}
+.pulse b{display:block;font:700 22px "Bricolage Grotesque",Georgia,serif}
+.pulse span{color:var(--muted);font-size:13px}
+nav.tabs{display:flex;gap:4px;border-bottom:1px solid var(--line);margin-bottom:18px;overflow-x:auto}
+nav.tabs button{background:none;border:0;padding:10px 14px;font-weight:600;font-size:15px;font-family:inherit;color:var(--muted);cursor:pointer;border-bottom:3px solid transparent;white-space:nowrap}
+nav.tabs button[aria-selected="true"]{color:var(--ink);border-bottom-color:var(--sage)}
+nav.tabs .count{font-weight:500;color:var(--muted);margin-left:4px}
+.filters{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-bottom:18px}
+.filters input,.filters select,.btn{font:inherit;color:var(--ink);background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:7px 10px}
+.filters input[type=search]{min-width:240px;flex:1 1 240px;max-width:420px}
+.filters label{display:flex;align-items:center;gap:6px;color:var(--muted);font-size:14px}
+.btn{cursor:pointer}
+.btn:hover{border-color:var(--sage)}
+.result-note{color:var(--muted);font-size:14px;margin:-6px 0 14px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:22px 18px}
+.card{display:flex;flex-direction:column;min-width:0}
+.thumb{position:relative;display:block;aspect-ratio:16/9;border-radius:10px;overflow:hidden;background:var(--line)}
+.thumb img{width:100%;height:100%;object-fit:cover;display:block}
+.dur{position:absolute;right:6px;bottom:6px;background:rgba(0,0,0,.78);color:#fff;font-size:12px;font-weight:600;padding:1px 6px;border-radius:4px}
+.stamp{position:absolute;left:8px;top:8px;background:var(--marigold);color:var(--marigold-ink);font:700 18px/1 "Bricolage Grotesque",Georgia,serif;padding:6px 9px 5px;border-radius:6px;transform:rotate(-3deg);box-shadow:0 2px 0 rgba(0,0,0,.25)}
+.stamp small{font:600 11px "Instrument Sans",sans-serif;margin-left:3px}
+.newtag{position:absolute;right:6px;top:6px;background:var(--new);color:#fff;font-size:12px;font-weight:600;padding:2px 7px;border-radius:4px}
+.card h3{font:600 15.5px/1.35 "Instrument Sans",sans-serif;margin:10px 0 4px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.card h3 a{text-decoration:none}
+.card h3 a:hover{text-decoration:underline}
+.ch{display:flex;align-items:center;gap:8px;color:var(--muted);font-size:13.5px;min-width:0}
+.ch a{text-decoration:none;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.tier{font-size:12px;font-weight:600;border-radius:999px;padding:1px 8px;background:var(--sage-soft);color:var(--sage);white-space:nowrap}
+.tier.Large{background:var(--sage);color:var(--surface)}
+.stats{display:flex;flex-wrap:wrap;gap:4px 12px;font-size:13.5px;margin-top:6px}
+.stats .k{color:var(--muted)}
+.up{color:var(--up);font-weight:600}
+.down{color:var(--down);font-weight:600}
+.srcs{display:flex;flex-wrap:wrap;gap:4px;margin-top:6px}
+.srcs span{font-size:12px;color:var(--muted);border:1px solid var(--line);border-radius:4px;padding:0 6px}
+details{margin-top:8px;font-size:13.5px}
+details summary{cursor:pointer;color:var(--sage);font-weight:600}
+details p{margin:6px 0 0;color:var(--ink)}
+details .lbl{color:var(--muted);font-size:12.5px;margin-top:8px}
+.two{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:32px}
+@media (max-width:900px){.two{grid-template-columns:1fr}}
+h2{font:700 22px "Bricolage Grotesque",Georgia,serif;margin:0 0 4px}
+.hint{color:var(--muted);font-size:14px;margin:0 0 12px}
+.tablewrap{overflow-x:auto;background:var(--surface);border:1px solid var(--line);border-radius:10px}
+table{border-collapse:collapse;width:100%;font-size:14px}
+th,td{text-align:left;padding:8px 12px;border-bottom:1px solid var(--line);white-space:nowrap}
+th{font-weight:600;color:var(--muted);cursor:pointer;user-select:none;position:sticky;top:0;background:var(--surface)}
+th.num,td.num{text-align:right}
+tr:last-child td{border-bottom:0}
+td.term button{background:none;border:0;padding:0;font:inherit;color:var(--ink);cursor:pointer;text-decoration:underline;text-decoration-color:var(--line);text-underline-offset:3px}
+.pill-new{font-size:11.5px;font-weight:600;color:var(--new);margin-left:6px}
+.sugg{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:12px 14px;margin-bottom:12px}
+.sugg h4{margin:0 0 6px;font-size:14px}
+.sugg ul{margin:0;padding-left:18px;font-size:14px}
+.sugg li.new{color:var(--new);font-weight:600}
+.articles{list-style:none;margin:0;padding:0;max-width:880px}
+.articles li{padding:14px 0;border-bottom:1px solid var(--line)}
+.articles .meta{font-size:13px;color:var(--muted)}
+.articles a.t{font-weight:600;font-size:16px;text-decoration:none}
+.articles a.t:hover{text-decoration:underline}
+.articles p{margin:4px 0 0;font-size:14px;color:var(--muted)}
+.empty{padding:40px 0;color:var(--muted)}
+footer{margin-top:48px;color:var(--muted);font-size:13px}
+footer pre{white-space:pre-wrap;background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:10px;max-height:260px;overflow:auto}
+[hidden]{display:none!important}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <div>
+      <h1>Self-Improvement Trend Radar</h1>
+      <div class="sub" id="updated"></div>
+    </div>
+    <div class="pulse" id="pulse"></div>
+  </header>
+
+  <nav class="tabs" role="tablist" id="tabs"></nav>
+
+  <section id="tab-videos" role="tabpanel">
+    <div class="filters">
+      <input type="search" id="q" placeholder="Search titles, channels, keywords" aria-label="Search videos">
+      <label>Uploaded within
+        <select id="age"><option value="1">1 day</option><option value="3">3 days</option><option value="7" selected>7 days</option><option value="14">14 days</option><option value="30">30 days</option><option value="9999">Any time</option></select>
+      </label>
+      <label>Channel size
+        <select id="tier"><option value="">All</option><option>Nano</option><option>Small</option><option>Mid</option><option>Large</option></select>
+      </label>
+      <label>Format
+        <select id="fmt"><option value="">All</option><option value="long">Long-form</option><option value="short">Shorts (≤3 min)</option></select>
+      </label>
+      <label>Min. outlier
+        <select id="minout"><option value="0">Any</option><option value="1.5">1.5×</option><option value="3">3×</option><option value="5">5×</option><option value="10">10×</option></select>
+      </label>
+      <label>Sort
+        <select id="sort">
+          <option value="vpd">Views per day</option><option value="outlier">Outlier score</option>
+          <option value="growth">Growth since last check</option><option value="views">Total views</option>
+          <option value="newest">Newest</option><option value="radar">Days on radar</option>
+        </select>
+      </label>
+      <label><input type="checkbox" id="onlynew"> New today</label>
+      <button class="btn" id="csv" type="button">Export CSV</button>
+    </div>
+    <div class="result-note" id="vnote"></div>
+    <div class="grid" id="grid"></div>
+  </section>
+
+  <section id="tab-keywords" role="tabpanel" hidden>
+    <div class="two">
+      <div>
+        <h2>Rising title keywords</h2>
+        <p class="hint">Words and phrases in this window’s video titles, compared with the average of the last 7 daily checks. Select a keyword to see its videos.</p>
+        <div class="tablewrap"><table id="kwtable"></table></div>
+      </div>
+      <div>
+        <h2>What people are searching</h2>
+        <p class="hint">YouTube search suggestions for your seed topics. Blue ones appeared for the first time today.</p>
+        <div id="sugg"></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="tab-channels" role="tabpanel" hidden>
+    <div class="filters">
+      <input type="search" id="cq" placeholder="Search channels" aria-label="Search channels">
+      <label>Channel size
+        <select id="ctier"><option value="">All</option><option>Nano</option><option>Small</option><option>Mid</option><option>Large</option></select>
+      </label>
+      <label><input type="checkbox" id="ctracked"> Followed only</label>
+    </div>
+    <p class="hint">Outlier = a video’s views divided by the channel’s average views per video. Small channels with high outliers are the ideas worth studying.</p>
+    <div class="tablewrap"><table id="chtable"></table></div>
+  </section>
+
+  <section id="tab-reading" role="tabpanel" hidden>
+    <div class="filters">
+      <input type="search" id="aq" placeholder="Search posts" aria-label="Search posts">
+      <label>Type
+        <select id="akind"><option value="">All</option><option value="blog">Blogs</option><option value="newsletter">Newsletters</option><option value="news">News</option></select>
+      </label>
+    </div>
+    <ul class="articles" id="alist"></ul>
+  </section>
+
+  <section id="tab-reddit" role="tabpanel" hidden>
+    <ul class="articles" id="rlist"></ul>
+  </section>
+
+  <footer>
+    <details><summary>Run log</summary><pre id="log"></pre></details>
+  </footer>
+</div>
+
+<script type="application/json" id="data">__DATA__</script>
+<script>
+(function(){
+"use strict";
+const D = JSON.parse(document.getElementById("data").textContent);
+const $ = id => document.getElementById(id);
+
+function el(tag, attrs, ...kids){
+  const n = document.createElement(tag);
+  for (const [k, v] of Object.entries(attrs || {})) {
+    if (v == null || v === false) continue;
+    if (k === "class") n.className = v;
+    else if (k === "text") n.textContent = v;
+    else if (k === "href") { if (/^https?:\/\//i.test(v)) { n.href = v; n.target = "_blank"; n.rel = "noopener noreferrer"; } }
+    else if (k === "src") { if (/^(https:\/\/|data:image\/)/i.test(v)) n.src = v; }
+    else if (k.startsWith("on")) n.addEventListener(k.slice(2), v);
+    else n.setAttribute(k, v === true ? "" : v);
+  }
+  for (const c of kids) { if (c == null || c === false) continue; n.append(c.nodeType ? c : document.createTextNode(String(c))); }
+  return n;
+}
+const fmt = n => n == null ? "–" : Math.abs(n) >= 1e9 ? (n/1e9).toFixed(1)+"B" : Math.abs(n) >= 1e6 ? (n/1e6).toFixed(1)+"M" : Math.abs(n) >= 1e3 ? (n/1e3).toFixed(1)+"K" : String(Math.round(n));
+const signed = n => n == null ? "–" : (n > 0 ? "+" : "") + fmt(n);
+const dur = s => { if (!s) return ""; const h = Math.floor(s/3600), m = Math.floor(s%3600/60), x = s%60; return (h ? h+":"+String(m).padStart(2,"0") : m) + ":" + String(x).padStart(2,"0"); };
+const ago = d => d == null ? "" : d < 1 ? Math.max(1, Math.round(d*24)) + " h ago" : Math.round(d) + (Math.round(d) === 1 ? " day ago" : " days ago");
+
+/* Header */
+const gen = new Date(D.generated);
+$("updated").textContent = "Updated " + gen.toLocaleString() + " · " + D.snapshots + " daily snapshot" + (D.snapshots === 1 ? "" : "s");
+const newToday = D.videos.filter(v => v.is_new).length;
+const breakouts = D.videos.filter(v => (v.outlier || 0) >= 3).length;
+[[fmt(D.videos.length), "videos on radar"], [fmt(newToday), "new today"], [fmt(breakouts), "breakouts (3×+)"],
+ [fmt(D.channels.length), "channels"], [fmt(D.quota_used) + " / " + fmt(D.quota_budget), "API units used"]]
+ .forEach(([b, s]) => $("pulse").append(el("div", {}, el("b", {text: b}), el("span", {text: s}))));
+$("log").textContent = (D.log || []).join("\n");
+
+/* Tabs */
+const reddit = D.articles.filter(a => a.kind === "reddit");
+const reading = D.articles.filter(a => a.kind !== "reddit");
+const tabs = [["videos","Videos",D.videos.length],["keywords","Keywords",D.keywords.length],["channels","Channels",D.channels.length],["reading","Blogs & newsletters",reading.length],["reddit","Reddit",reddit.length]];
+function showTab(id){
+  tabs.forEach(([t]) => { $("tab-"+t).hidden = t !== id; $("btn-"+t).setAttribute("aria-selected", String(t === id)); });
+}
+tabs.forEach(([id, label, n]) => $("tabs").append(el("button", {id: "btn-"+id, role: "tab", type: "button", onclick: () => showTab(id)}, label, el("span", {class: "count", text: n}))));
+
+/* Videos */
+const vf = ["q","age","tier","fmt","minout","sort","onlynew"];
+let currentVideos = [];
+function filterVideos(){
+  const q = $("q").value.trim().toLowerCase(), age = +$("age").value, tier = $("tier").value, fmtSel = $("fmt").value;
+  const minout = +$("minout").value, sort = $("sort").value, onlyNew = $("onlynew").checked;
+  let list = D.videos.filter(v => {
+    if (v.age_days > age) return false;
+    if (tier && v.tier !== tier) return false;
+    if (fmtSel === "short" && !(v.duration && v.duration <= 180)) return false;
+    if (fmtSel === "long" && !(v.duration > 180)) return false;
+    if (minout && !((v.outlier || 0) >= minout)) return false;
+    if (onlyNew && !v.is_new) return false;
+    if (q) { const hay = (v.title + " " + v.channel + " " + v.sources.join(" ")).toLowerCase(); if (!hay.includes(q)) return false; }
+    return true;
+  });
+  const key = {vpd: v => v.vpd, outlier: v => v.outlier || 0, growth: v => v.growth || 0, views: v => v.views, newest: v => -v.age_days, radar: v => v.radar_days}[sort];
+  list.sort((a, b) => key(b) - key(a));
+  return list;
+}
+function card(v){
+  const thumb = el("a", {class: "thumb", href: v.url, "aria-label": v.title},
+    el("img", {src: v.thumb, alt: "", loading: "lazy"}),
+    v.outlier && v.outlier >= 1.5 ? el("span", {class: "stamp", title: "Views compared with this channel’s average"}, v.outlier.toFixed(1) + "×", el("small", {text: "avg"})) : null,
+    v.is_new ? el("span", {class: "newtag", text: "New today"}) : null,
+    v.duration ? el("span", {class: "dur", text: dur(v.duration)}) : null);
+  const growth = v.growth == null ? el("span", {class: "k", text: "first check today"})
+    : el("span", {class: v.growth > 0 ? "up" : "down"}, signed(v.growth) + " views/day since last check");
+  const intro = el("details", {},
+    el("summary", {text: v.intro ? "Intro and hook" : "Description hook"}),
+    v.intro ? el("div", {class: "lbl", text: "First minute (transcript)"}) : null,
+    v.intro ? el("p", {text: v.intro}) : null,
+    el("div", {class: "lbl", text: "Description opening"}),
+    el("p", {text: v.hook || "No description."}));
+  return el("article", {class: "card"}, thumb,
+    el("h3", {}, el("a", {href: v.url, text: v.title})),
+    el("div", {class: "ch"}, el("a", {href: v.channel_url, text: v.channel || "Unknown channel"}),
+      el("span", {class: "tier " + v.tier, text: v.tier + (v.subs != null ? " · " + fmt(v.subs) : "")})),
+    el("div", {class: "stats"},
+      el("span", {}, el("b", {text: fmt(v.views)}), " views"),
+      el("span", {class: "k", text: ago(v.age_days)}),
+      el("span", {}, el("b", {text: fmt(v.vpd)}), "/day"),
+      el("span", {class: "k", text: "on radar " + v.radar_days + (v.radar_days === 1 ? " day" : " days")})),
+    el("div", {class: "stats"}, growth, v.engagement != null ? el("span", {class: "k", text: v.engagement + "% engagement"}) : null),
+    el("div", {class: "srcs"}, ...v.sources.slice(0, 4).map(s => el("span", {text: s.replace(/^kw:/, "").replace(/^trending:/, "trending ")}))),
+    intro);
+}
+function renderVideos(){
+  currentVideos = filterVideos();
+  const grid = $("grid");
+  grid.replaceChildren();
+  $("vnote").textContent = currentVideos.length + " of " + D.videos.length + " videos";
+  if (!currentVideos.length) { grid.append(el("div", {class: "empty", text: "No videos match these filters. Widen the upload window or clear the search."})); return; }
+  const frag = document.createDocumentFragment();
+  currentVideos.slice(0, 400).forEach(v => frag.append(card(v)));
+  grid.append(frag);
+}
+vf.forEach(id => $(id).addEventListener(id === "q" ? "input" : "change", renderVideos));
+$("csv").addEventListener("click", () => {
+  const cols = ["title","channel","tier","subs","views","age_days","vpd","outlier","growth","radar_days","url"];
+  const esc = x => { let s = x == null ? "" : String(x); if (/^[=+\-@]/.test(s)) s = "'" + s; return '"' + s.replace(/"/g, '""') + '"'; };
+  const csv = [cols.join(",")].concat(currentVideos.map(v => cols.map(c => esc(v[c])).join(","))).join("\n");
+  const a = el("a", {download: "trend-radar-" + D.today + ".csv"});
+  a.href = URL.createObjectURL(new Blob([csv], {type: "text/csv"}));
+  document.body.append(a); a.click(); a.remove();
+});
+
+/* Sortable tables */
+function table(node, cols, rows, initial){
+  let sortKey = initial, dir = -1;
+  function draw(){
+    const sorted = rows.slice().sort((a, b) => {
+      const x = a[sortKey], y = b[sortKey];
+      if (typeof x === "string" || typeof y === "string") return dir * String(x || "").localeCompare(String(y || ""));
+      return dir * ((x ?? -Infinity) - (y ?? -Infinity));
+    });
+    node.replaceChildren(
+      el("thead", {}, el("tr", {}, ...cols.map(c => el("th", {class: c.num ? "num" : "", scope: "col", tabindex: "0",
+        onclick: () => { dir = sortKey === c.key ? -dir : -1; sortKey = c.key; draw(); },
+        onkeydown: e => { if (e.key === "Enter") { dir = sortKey === c.key ? -dir : -1; sortKey = c.key; draw(); } }
+      }, c.label + (sortKey === c.key ? (dir < 0 ? " ↓" : " ↑") : ""))))),
+      el("tbody", {}, ...sorted.map(r => el("tr", {}, ...cols.map(c => el("td", {class: (c.num ? "num " : "") + (c.cls || "")}, c.render ? c.render(r) : r[c.key]))))));
+  }
+  draw();
+}
+
+/* Keywords */
+table($("kwtable"), [
+  {key: "term", label: "Keyword", cls: "term", render: k => el("span", {},
+      el("button", {type: "button", text: k.term, onclick: () => { $("q").value = k.term; $("age").value = "30"; renderVideos(); showTab("videos"); }}),
+      k.is_new ? el("span", {class: "pill-new", text: "new"}) : null)},
+  {key: "videos", label: "Videos", num: true},
+  {key: "delta", label: "vs 7-day avg", num: true, render: k => el("span", {class: k.delta > 0 ? "up" : k.delta < 0 ? "down" : "", text: (k.delta > 0 ? "+" : "") + k.delta})},
+  {key: "views", label: "Total views", num: true, render: k => fmt(k.views)}
+], D.keywords, "delta");
+
+const sg = $("sugg");
+const seeds = Object.keys(D.suggestions || {});
+if (!seeds.length) sg.append(el("p", {class: "hint", text: "No suggestions collected yet. They appear after the next run."}));
+seeds.forEach(seed => sg.append(el("div", {class: "sugg"}, el("h4", {text: seed}),
+  el("ul", {}, ...D.suggestions[seed].map(s => el("li", {class: s.is_new ? "new" : "", text: s.text}))))));
+
+/* Channels */
+function renderChannels(){
+  const q = $("cq").value.trim().toLowerCase(), tier = $("ctier").value, tr = $("ctracked").checked;
+  const rows = D.channels.filter(c => (!q || (c.title + " " + (c.handle || "")).toLowerCase().includes(q)) && (!tier || c.tier === tier) && (!tr || c.tracked));
+  table($("chtable"), [
+    {key: "title", label: "Channel", render: c => el("a", {href: c.url, text: c.title})},
+    {key: "tier", label: "Size", render: c => el("span", {class: "tier " + c.tier, text: c.tier})},
+    {key: "subs", label: "Subscribers", num: true, render: c => fmt(c.subs)},
+    {key: "subs_7d", label: "Subs, last 7 days", num: true, render: c => el("span", {class: c.subs_7d > 0 ? "up" : "", text: signed(c.subs_7d)})},
+    {key: "avg_views", label: "Avg views/video", num: true, render: c => fmt(c.avg_views)},
+    {key: "on_radar", label: "Videos on radar", num: true},
+    {key: "best_outlier", label: "Best outlier", num: true, render: c => c.best_outlier ? c.best_outlier.toFixed(1) + "×" : "–"},
+    {key: "tracked", label: "Followed", render: c => c.tracked ? (c.auto ? "Auto (breakout)" : "Seed list") : ""}
+  ], rows, "best_outlier");
+}
+["cq","ctier","ctracked"].forEach(id => $(id).addEventListener(id === "cq" ? "input" : "change", renderChannels));
+
+/* Articles */
+function articleList(node, list){
+  node.replaceChildren();
+  if (!list.length) { node.append(el("li", {class: "empty", text: "Nothing here yet. Check the run log for feeds that failed."})); return; }
+  list.forEach(a => node.append(el("li", {},
+    el("div", {class: "meta"}, a.source + (a.age_days != null ? " · " + ago(a.age_days) : ""), a.is_new ? el("span", {class: "pill-new", text: "new"}) : null),
+    el("a", {class: "t", href: a.url, text: a.title || a.url}),
+    a.summary ? el("p", {text: a.summary}) : null)));
+}
+function renderReading(){
+  const q = $("aq").value.trim().toLowerCase(), k = $("akind").value;
+  articleList($("alist"), reading.filter(a => (!k || a.kind === k) && (!q || (a.title + " " + a.source + " " + a.summary).toLowerCase().includes(q))));
+}
+["aq","akind"].forEach(id => $(id).addEventListener(id === "aq" ? "input" : "change", renderReading));
+
+renderVideos(); renderChannels(); renderReading(); articleList($("rlist"), reddit);
+showTab("videos");
+})();
+</script>
+</body>
+</html>
